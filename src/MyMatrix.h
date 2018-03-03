@@ -7,7 +7,7 @@ public:
 	MyMatrix(int x, int y);
 	~MyMatrix();
 
-	MyMatrix operator() (MyMatrix a);
+	MyMatrix(const MyMatrix & a);
 	MyMatrix coppyMatrix(MyMatrix toCoppy);
 private:
 	 int sizeX, sizeY;

@@ -21,11 +21,23 @@ MyMatrix::MyMatrix(int x, int y)
 	}
 }
 
-MyMatrix MyMatrix::operator()(MyMatrix a)
+
+
+MyMatrix::MyMatrix(const MyMatrix & a)
 {
-	MyMatrix nowa;
-	nowa = a;
-	return nowa;
+	sizeX = a.sizeX;
+	sizeY = a.sizeY;
+	matrix = new int*[sizeX];
+	for (int i = 0; i < sizeX; i++)
+	{
+		matrix[i] = new int[sizeY];
+		for (int j = 0; j < sizeY; j++)
+		{
+			matrix[i][j] = 
+		}
+	}
+
+
 }
 
 MyMatrix MyMatrix::coppyMatrix(MyMatrix toCoppy)
