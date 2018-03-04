@@ -18,8 +18,6 @@ public:
 	friend MyMatrix operator *(MyMatrix oldMatrix, int a);
 	friend MyMatrix operator /(MyMatrix oldMatrix, int a);
 
-
-
 	//~MyMatrix();
 private:
 	int sizeX, sizeY;
