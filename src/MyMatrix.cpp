@@ -1,10 +1,8 @@
 #include <iostream>
 #include "MyMatrix.h"
+#include <exception>
+using namespace std;
 
-
-MyMatrix::MyMatrix()
-{
-}
 
 MyMatrix::MyMatrix(int x, int y)
 {
@@ -21,8 +19,6 @@ MyMatrix::MyMatrix(int x, int y)
 	}
 }
 
-
-
 MyMatrix::MyMatrix(const MyMatrix & a)
 {
 	sizeX = a.sizeX;
@@ -33,13 +29,40 @@ MyMatrix::MyMatrix(const MyMatrix & a)
 		matrix[i] = new int[sizeY];
 		for (int j = 0; j < sizeY; j++)
 		{
-			matrix[i][j] = 
+			matrix[i][j] = a.matrix[i][j];
 		}
 	}
-
-
 }
 
+int MyMatrix::getSizeX()
+{
+	return sizeX;
+}
+
+int MyMatrix::getSizeY()
+{
+	return sizeY;
+}
+int MyMatrix::getElement(int x, int y)
+{
+	return matrix[x][y];
+}
+void MyMatrix::showMatrix()
+{
+	for (int i = 0; i < sizeX; i++)
+	{
+		for (int j = 0; j < sizeY; j++)
+		{
+			cout << matrix[i][j];
+		}
+		cout << endl;
+	}
+}
+
+void MyMatrix::setValue(int toSet)
+{
+
+}
 MyMatrix MyMatrix::coppyMatrix(MyMatrix toCoppy)
 {
 	 MyMatrix newMatrix(toCoppy.sizeX, toCoppy.sizeY);
@@ -51,4 +74,57 @@ MyMatrix MyMatrix::coppyMatrix(MyMatrix toCoppy)
 		 }
 	 }
 	 return newMatrix;
+}
+
+MyMatrix operator +(MyMatrix oldMatrix, int a)
+{
+	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
+	for (int i = 0; i < oldMatrix.getSizeX(); i++)
+	{
+		for (int j = 0; j < oldMatrix.getSizeY(); j++)
+		{
+			newMatrix.matrix[i][j] = oldMatrix.getElement(i,j) + a;
+		}
+	}
+	return newMatrix;
+}
+
+MyMatrix operator -(MyMatrix oldMatrix, int a)
+{
+	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
+	for (int i = 0; i < oldMatrix.getSizeX(); i++)
+	{
+		for (int j = 0; j < oldMatrix.getSizeY(); j++)
+		{
+			newMatrix.matrix[i][j] = oldMatrix.getElement(i, j) - a;
+		}
+	}
+	return newMatrix;
+}
+
+MyMatrix operator *(MyMatrix oldMatrix, int a)
+{
+	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
+	for (int i = 0; i < oldMatrix.getSizeX(); i++)
+	{
+		for (int j = 0; j < oldMatrix.getSizeY(); j++)
+		{
+			newMatrix.matrix[i][j] = oldMatrix.getElement(i, j) * a;
+		}
+	}
+	return newMatrix;
+}
+
+MyMatrix operator /(MyMatrix oldMatrix, int a)
+{
+		if (a == 0)throw std::overflow_error("Divide by zero exception");
+		MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
+		for (int i = 0; i < oldMatrix.getSizeX(); i++)
+		{
+			for (int j = 0; j < oldMatrix.getSizeY(); j++)
+			{
+				newMatrix.matrix[i][j] = oldMatrix.getElement(i, j) / a;
+			}
+		}
+		return newMatrix;
 }
