@@ -117,7 +117,7 @@ MyMatrix operator *(MyMatrix oldMatrix, int a)
 
 MyMatrix operator /(MyMatrix oldMatrix, int a)
 {
-		if (a == 0)throw std::overflow_error("Divide by zero exception");
+		if (a == 0)throw std::logic_error("Divide by zero exception");
 		MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
 		for (int i = 0; i < oldMatrix.getSizeX(); i++)
 		{

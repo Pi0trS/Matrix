@@ -20,6 +20,7 @@ int main()
 	}
 	catch (logic_error e)
 	{
-		std::cout << e.what() << " -> ";
+		std::cout << e.what();
 	}
+	cout << "koniec";
 }
