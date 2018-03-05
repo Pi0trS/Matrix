@@ -18,7 +18,7 @@ MyMatrix::MyMatrix(int x, int y)
 		}
 	}
 }
-
+//********************************************************
 MyMatrix::MyMatrix(const MyMatrix & a)
 {
 	sizeX = a.sizeX;
@@ -33,7 +33,7 @@ MyMatrix::MyMatrix(const MyMatrix & a)
 		}
 	}
 }
-
+//********************************************************
 int MyMatrix::getSizeX()
 {
 	return sizeX;
@@ -43,6 +43,7 @@ int MyMatrix::getSizeY()
 {
 	return sizeY;
 }
+
 int MyMatrix::getElement(int x, int y)
 {
 	return matrix[x][y];
@@ -59,10 +60,12 @@ void MyMatrix::showMatrix()
 	}
 }
 
-void MyMatrix::setValue(int toSet)
+void MyMatrix::setValue(int x, int y ,int toSet)
 {
-
+	if (x >= sizeX || y >= sizeY)throw out_of_range("out of range!!!");
+	matrix[x][y] = toSet;
 }
+//********************************************************
 MyMatrix MyMatrix::coppyMatrix(MyMatrix toCoppy)
 {
 	 MyMatrix newMatrix(toCoppy.sizeX, toCoppy.sizeY);
@@ -75,7 +78,7 @@ MyMatrix MyMatrix::coppyMatrix(MyMatrix toCoppy)
 	 }
 	 return newMatrix;
 }
-
+//********************************************************
 MyMatrix operator +(MyMatrix oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
@@ -88,7 +91,21 @@ MyMatrix operator +(MyMatrix oldMatrix, int a)
 	}
 	return newMatrix;
 }
-
+//********************************************************
+MyMatrix MyMatrix::operator+(MyMatrix & oldMatrix)
+{
+	if (sizeX != oldMatrix.getSizeX() || sizeY != oldMatrix.getSizeY())throw std::invalid_argument("Matrix have difrennce size");
+	MyMatrix newMatrix(sizeX, sizeY);
+	for (int i = 0; i < oldMatrix.getSizeX(); i++)
+	{
+		for (int j = 0; j < oldMatrix.getSizeY(); j++)
+		{
+			newMatrix.matrix[i][j] = matrix[i][j] + oldMatrix.getElement(i, j) ;
+		}
+	}
+	return newMatrix;
+}
+//********************************************************
 MyMatrix operator -(MyMatrix oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
@@ -101,7 +118,21 @@ MyMatrix operator -(MyMatrix oldMatrix, int a)
 	}
 	return newMatrix;
 }
-
+//********************************************************
+MyMatrix MyMatrix::operator -(MyMatrix & oldMatrix)
+{
+	if (sizeX != oldMatrix.getSizeX() || sizeY != oldMatrix.getSizeY())throw std::invalid_argument("Matrix have difrennce size");
+	MyMatrix newMatrix(sizeX, sizeY);
+	for (int i = 0; i < oldMatrix.getSizeX(); i++)
+	{
+		for (int j = 0; j < oldMatrix.getSizeY(); j++)
+		{
+			newMatrix.matrix[i][j] = matrix[i][j] - oldMatrix.getElement(i, j);
+		}
+	}
+	return newMatrix;
+}
+//********************************************************
 MyMatrix operator *(MyMatrix oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
@@ -114,7 +145,24 @@ MyMatrix operator *(MyMatrix oldMatrix, int a)
 	}
 	return newMatrix;
 }
-
+//********************************************************
+MyMatrix MyMatrix::operator*(MyMatrix & oldMatrix)
+{
+	if (sizeY != oldMatrix.getSizeX())throw length_error("Wrong matrix dimension");
+		MyMatrix newMatrix(sizeX, oldMatrix.getSizeY());
+		for (int i = 0; i<sizeX; i++)
+		{
+			for (int j = 0; j<oldMatrix.getSizeY(); j++)
+			{
+				for (int k = 0; k<sizeY; k++)
+				{
+					newMatrix.matrix[i][j] = newMatrix.matrix[i][j] + (matrix[i][k] * oldMatrix.matrix[k][j]);
+				}
+			}
+		}
+		return newMatrix;
+}
+//********************************************************
 MyMatrix operator /(MyMatrix oldMatrix, int a)
 {
 		if (a == 0)throw std::logic_error("Divide by zero exception");
@@ -128,3 +176,9 @@ MyMatrix operator /(MyMatrix oldMatrix, int a)
 		}
 		return newMatrix;
 }
+//********************************************************
+MyMatrix MyMatrix::operator=(MyMatrix &oldMatrix)
+{
+	if(sizeX !=oldMatrix.getSizeX())
+}
+//********************************************************

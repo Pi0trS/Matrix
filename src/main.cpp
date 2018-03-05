@@ -8,17 +8,16 @@ int main()
 	try
 	{
 		MyMatrix oko(2, 2);
-		MyMatrix oko1((oko + 2));
-		MyMatrix oko2(oko1);
-
-		oko / 0;
-		oko1.showMatrix();
 		oko.showMatrix();
+		oko.setValue(0, 0, 3);
+		MyMatrix oko1(2, 4);
+		oko1.setValue(0, 0, 3);
+		MyMatrix oko2((oko * oko1));
 		oko2.showMatrix();
 		cout << "helll0";
 		return 0;
 	}
-	catch (logic_error e)
+	catch (const std::logic_error& e)
 	{
 		std::cout << e.what();
 	}
