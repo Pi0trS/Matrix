@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 using namespace std;
 #include"MyMatrix.h"
 
@@ -8,12 +9,12 @@ int main()
 	try
 	{
 		MyMatrix oko(2, 2);
-		oko.showMatrix();
 		oko.setValue(0, 0, 3);
-		MyMatrix oko1(2, 4);
-		oko1.setValue(0, 0, 3);
-		MyMatrix oko2((oko * oko1));
-		oko2.showMatrix();
+		MyMatrix oko1(2, 2);
+		oko1 = oko*oko;
+
+		cout << endl;
+		cout  << oko1;
 		cout << "helll0";
 		return 0;
 	}

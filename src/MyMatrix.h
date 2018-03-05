@@ -1,5 +1,5 @@
 #pragma once
-
+using namespace std;
 class MyMatrix
 {
 public:
@@ -20,7 +20,9 @@ public:
 	friend MyMatrix operator *(MyMatrix oldMatrix, int a);
 	MyMatrix operator *(MyMatrix & oldMatrix);
 	friend MyMatrix operator /(MyMatrix oldMatrix, int a);
-	MyMatrix operator=(MyMatrix &oldMatrix);
+	MyMatrix operator=(MyMatrix oldMatrix);
+	friend ostream &operator<<(ostream &stream, MyMatrix oldMatrix);
+	string matrixToString();
 	//~MyMatrix();
 private:
 	int sizeX, sizeY;

@@ -1,8 +1,9 @@
 #include <iostream>
-#include "MyMatrix.h"
+#include <string>
 #include <exception>
-using namespace std;
+#include "MyMatrix.h"
 
+using namespace std;
 
 MyMatrix::MyMatrix(int x, int y)
 {
@@ -177,8 +178,36 @@ MyMatrix operator /(MyMatrix oldMatrix, int a)
 		return newMatrix;
 }
 //********************************************************
-MyMatrix MyMatrix::operator=(MyMatrix &oldMatrix)
+MyMatrix MyMatrix::operator=(MyMatrix oldMatrix)
 {
-	if(sizeX !=oldMatrix.getSizeX())
+	if (sizeX != oldMatrix.getSizeX() || sizeY != oldMatrix.getSizeY()) throw length_error("Wrong matrix dimension");
+	for (int i = 0; i < sizeX; i++)
+	{
+		for (int j = 0; j < sizeY; j++)
+		{
+			matrix[i][j] = oldMatrix.getElement(i, j);
+		}
+	}
+	return *this;
+}
+//********************************************************
+ostream &operator<<(ostream &stream, MyMatrix oldMatrix)
+{
+	stream << oldMatrix.matrixToString();
+	return stream;
+}
+//********************************************************
+std::string MyMatrix::matrixToString()
+{
+	string s;
+	for (int i = 0; i < getSizeX(); i++)
+	{
+		for (int j = 0; j < getSizeY(); j++) 
+		{
+			s.append(std::to_string(getElement(i, j)));
+		}
+		s.append("\n");
+	}
+	return s;
 }
 //********************************************************
