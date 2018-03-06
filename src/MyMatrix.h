@@ -1,4 +1,5 @@
 #pragma once
+#include "HelpOverload.h"
 using namespace std;
 class MyMatrix
 {
@@ -22,7 +23,7 @@ public:
 	friend MyMatrix operator /(MyMatrix oldMatrix, int a);
 	MyMatrix operator=(MyMatrix oldMatrix);
 	friend ostream &operator<<(ostream &stream, MyMatrix oldMatrix);
-	int* operator[](int i);
+	HelpOverload operator[](int i);
 	string matrixToString();
 	//~MyMatrix();
 private:

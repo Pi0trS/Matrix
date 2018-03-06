@@ -197,9 +197,10 @@ ostream &operator<<(ostream &stream, MyMatrix oldMatrix)
 	return stream;
 }
 //********************************************************
-int* MyMatrix::operator[](int i)
+HelpOverload MyMatrix::operator[](int i)
 {
-	return matrix[i];
+	HelpOverload newHelp(matrix, sizeY, i);
+	return newHelp;
 }
 //********************************************************
 std::string MyMatrix::matrixToString()
