@@ -197,6 +197,11 @@ ostream &operator<<(ostream &stream, MyMatrix oldMatrix)
 	return stream;
 }
 //********************************************************
+int* MyMatrix::operator[](int i)
+{
+	return matrix[i];
+}
+//********************************************************
 std::string MyMatrix::matrixToString()
 {
 	string s;

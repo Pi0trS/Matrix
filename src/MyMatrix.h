@@ -22,6 +22,7 @@ public:
 	friend MyMatrix operator /(MyMatrix oldMatrix, int a);
 	MyMatrix operator=(MyMatrix oldMatrix);
 	friend ostream &operator<<(ostream &stream, MyMatrix oldMatrix);
+	int* operator[](int i);
 	string matrixToString();
 	//~MyMatrix();
 private:
