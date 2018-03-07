@@ -1,0 +1,21 @@
+napisz "porzadna" klase Matrix w c++
+-template
+-wyjatki
+-operatory
+`
+MyMatrix<int> mm(10, 5); //template, konstruktor, inicjacja wartosci na 0
+MyMatrix<int> mm2(mm1); //kopia
+MyMatrix<int> mm3 = mm*mm + mm2; //operatory
+cout << mm.toString() << endll; //metoda toString()
+cout << mm << endl; //operator <<
+
+mm.setValue(1, 0, 10); //getery i setery dla wartosci
+mm[1][0] = 10; //operator dostepu do elementu dzialajacy w obie strony -> odczyt i zapis
+cout << mm[1][0] << endl;
+`
+
+kazda nielegalna akcja (utworzenie macierzy o rozmiarach < 0, dostep do elementów poza zakresem, mnozenie macierzy których nie da sie pomnozyc, etc) ma rzucac wyjatek
+
+wskazówka: zacznij od zwyklej macierzy na int czy double jesli jeszcze nie czujesz sie pewnie z templateami
+wskazówka2: operator [][] zostaw sobie na sam koniec (bo jest najtrudniejszy, jak bedzie trzeba to ci pomoge ale póki co kombinuj)
+wskazówka3: wszystko oprócz [][] jest trywialne, nie ma co sie za bardzo zastanawiac - odpalaj edytor i do roboty :D

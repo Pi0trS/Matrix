@@ -14,7 +14,7 @@ int main()
 		oko1 = oko*oko;
 
 		cout << endl;
-		//oko1[0][0] = 1;
+		oko1[0][6] = 1;
 		cout << oko1[0][0];
 		cout << "helll0";
 		return 0;

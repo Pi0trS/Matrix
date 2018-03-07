@@ -199,7 +199,7 @@ ostream &operator<<(ostream &stream, MyMatrix oldMatrix)
 //********************************************************
 HelpOverload MyMatrix::operator[](int i)
 {
-	HelpOverload newHelp(matrix, sizeY, i);
+	HelpOverload newHelp(matrix[i], sizeY, i);
 	return newHelp;
 }
 //********************************************************
