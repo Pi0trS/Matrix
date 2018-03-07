@@ -74,7 +74,7 @@ MyMatrix MyMatrix::coppyMatrix(MyMatrix toCoppy)
 	 {
 		 for (int j = 0; j < toCoppy.sizeY; j++)
 		 {
-			 toCoppy.matrix[i][j];
+			newMatrix.setValue(i,j, toCoppy.getElement(i,j));
 		 }
 	 }
 	 return newMatrix;
@@ -128,7 +128,7 @@ MyMatrix MyMatrix::operator -(MyMatrix & oldMatrix)
 	{
 		for (int j = 0; j < oldMatrix.getSizeY(); j++)
 		{
-			newMatrix.matrix[i][j] = matrix[i][j] - oldMatrix.getElement(i, j);
+			newMatrix.matrix[i][j] =  getElement(i,j) - oldMatrix.getElement(i, j);
 		}
 	}
 	return newMatrix;
@@ -157,7 +157,7 @@ MyMatrix MyMatrix::operator*(MyMatrix & oldMatrix)
 			{
 				for (int k = 0; k<sizeY; k++)
 				{
-					newMatrix.matrix[i][j] = newMatrix.matrix[i][j] + (matrix[i][k] * oldMatrix.matrix[k][j]);
+					newMatrix.matrix[i][j] = newMatrix.matrix[i][j] + (getElement(i,k) * oldMatrix.getElement(k, j));
 				}
 			}
 		}
@@ -215,5 +215,15 @@ std::string MyMatrix::matrixToString()
 		s.append("\n");
 	}
 	return s;
+}
+//********************************************************
+MyMatrix::~MyMatrix()
+{
+	for (int i = 0; i < sizeX; i++)
+	{
+		delete matrix[i];
+	}
+	delete matrix;
+	matrix = nullptr;
 }
 //********************************************************

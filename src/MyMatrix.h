@@ -7,6 +7,7 @@ public:
 	MyMatrix();
 	MyMatrix(int x, int y);
 	MyMatrix(const MyMatrix & a);
+	~MyMatrix();
 
 	int getSizeX();
 	int getSizeY();
@@ -25,7 +26,7 @@ public:
 	friend ostream &operator<<(ostream &stream, MyMatrix oldMatrix);
 	HelpOverload operator[](int i);
 	string matrixToString();
-	//~MyMatrix();
+
 private:
 	int sizeX, sizeY;
 	int **matrix;
