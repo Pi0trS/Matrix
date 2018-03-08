@@ -3,7 +3,6 @@
 #include"MyMatrix.h"
 #include"HelpOverload.h"
 
-
 using namespace std;
 
 HelpOverload::HelpOverload(int* oldMatrix, int size_, int placeRow_)
