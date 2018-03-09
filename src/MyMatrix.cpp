@@ -221,7 +221,8 @@ ostream &operator<<(ostream &stream, MyMatrix<T> oldMatrix)
 template<class T>
 HelpOverload<T> MyMatrix<T>::operator[](int i)
 {
-	HelpOverload<T> newHelp(matrix[i], sizeY, i);
+	//HelpOverload<T> newHelp(matrix[i], sizeY, i);
+	HelpOverload<T> newHelp(testMatrix[i], sizeY, i);
 	return newHelp;
 }
 //********************************************************
