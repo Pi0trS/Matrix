@@ -71,7 +71,7 @@ void MyMatrix<T>::showMatrix()
 	}
 }
 template<class T>
-void MyMatrix<T>::setValue(int x, int y ,int toSet)
+void MyMatrix<T>::setValue(int x, int y ,T toSet)
 {
 	if (x >= sizeX || y >= sizeY)throw out_of_range("out of range!!!");
 	//matrix[x][y] = toSet;
@@ -93,14 +93,16 @@ MyMatrix<T> MyMatrix<T>::coppyMatrix(MyMatrix toCoppy)
 }
 //********************************************************
 template<class T>
-MyMatrix<T> operator +(MyMatrix<T> oldMatrix, int a)
+MyMatrix<T> operator +(MyMatrix<T> oldMatrix, T a)
 {
-	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
+	MyMatrix<T> newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
 	for (int i = 0; i < oldMatrix.getSizeX(); i++)
 	{
 		for (int j = 0; j < oldMatrix.getSizeY(); j++)
 		{
-			newMatrix.matrix[i][j] = oldMatrix.getElement(i,j) + a;
+			newMatrix.setValue(i,j, oldMatrix.getElement(i, j) + a);
+
+			//newMatrix.matrix[i][j] = oldMatrix.getElement(i,j) + a;
 		}
 	}
 	return newMatrix;

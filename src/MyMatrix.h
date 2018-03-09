@@ -17,10 +17,10 @@ public:
 	int getSizeY();
 	int getElement(int x, int y);
 	void showMatrix();
-	void setValue(int x, int y, int toSet);
+	void setValue(int x, int y, T toSet);
 	MyMatrix coppyMatrix(MyMatrix toCoppy);
-	friend MyMatrix operator +(MyMatrix oldMatrix, int a);
-	MyMatrix operator +(MyMatrix & oldMatrix);
+	template<class T> friend MyMatrix operator +(MyMatrix<T> oldMatrix, T a);
+	 MyMatrix operator +(MyMatrix & oldMatrix);
 	friend MyMatrix operator -(MyMatrix oldMatrix, int a);
 	MyMatrix operator -(MyMatrix & oldMatrix);
 	friend MyMatrix operator *(MyMatrix oldMatrix, int a);
@@ -36,3 +36,6 @@ private:
 	int **matrix;
 	T **testMatrix;
 };
+
+
+
