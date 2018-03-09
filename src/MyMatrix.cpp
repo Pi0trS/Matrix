@@ -11,13 +11,16 @@ MyMatrix<T>::MyMatrix(int x, int y)
 {
 	sizeX = x;
 	sizeY = y;
-	matrix = new int *[x];
+	//matrix = new int *[x];
+	testMatrix = new T *[x];
 	for (int i = 0; i < x; i++)
 	{
-		matrix[i] = new int[y];
+		//matrix[i] = new int[y];
+		testMatrix[i] = new T[y];
 		for (int j = 0; j < y; j++)
 		{
-			matrix[i][j] = 0;
+			//matrix[i][j] = 0;
+			testMatrix[i][j] = 0;
 		}
 	}
 }
@@ -52,7 +55,8 @@ int MyMatrix<T>::getSizeY()
 template<class T>
  int MyMatrix<T>::getElement(int x, int y)
 {
-	return matrix[x][y];
+	//return matrix[x][y];
+	 return testMatrix[x][y];
 }
  template<class T>
 void MyMatrix<T>::showMatrix()
@@ -70,7 +74,8 @@ template<class T>
 void MyMatrix<T>::setValue(int x, int y ,int toSet)
 {
 	if (x >= sizeX || y >= sizeY)throw out_of_range("out of range!!!");
-	matrix[x][y] = toSet;
+	//matrix[x][y] = toSet;
+	testMatrix[x][y] = toSet;
 }
 //********************************************************
 template<class T>

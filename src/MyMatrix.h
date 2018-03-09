@@ -34,4 +34,5 @@ public:
 private:
 	int sizeX, sizeY;
 	int **matrix;
+	T **testMatrix;
 };
