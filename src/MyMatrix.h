@@ -1,14 +1,17 @@
 #pragma once
 #include "HelpOverload.h"
 using namespace std;
+
+template<class T>
 class MyMatrix
 {
 public:
-	MyMatrix();
+	//MyMatrix();
 	MyMatrix(int x, int y);
-	MyMatrix(const MyMatrix & a);
+	MyMatrix(const MyMatrix<T> & a);
 	~MyMatrix();
-
+	
+	
 	int getSizeX();
 	int getSizeY();
 	int getElement(int x, int y);

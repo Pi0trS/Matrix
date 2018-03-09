@@ -5,7 +5,8 @@
 
 using namespace std;
 
-MyMatrix::MyMatrix(int x, int y)
+template<class T>
+MyMatrix<T>::MyMatrix(int x, int y)
 {
 	sizeX = x;
 	sizeY = y;
@@ -20,7 +21,8 @@ MyMatrix::MyMatrix(int x, int y)
 	}
 }
 //********************************************************
-MyMatrix::MyMatrix(const MyMatrix & a)
+template<class T>
+MyMatrix<T>::MyMatrix(const MyMatrix & a)
 {
 	sizeX = a.sizeX;
 	sizeY = a.sizeY;
@@ -35,21 +37,24 @@ MyMatrix::MyMatrix(const MyMatrix & a)
 	}
 }
 //********************************************************
-int MyMatrix::getSizeX()
-{
+template<class T>
+int MyMatrix<T>::getSizeX()
+{ 
 	return sizeX;
 }
 
-int MyMatrix::getSizeY()
+template<class T>
+int MyMatrix<T>::getSizeY()
 {
 	return sizeY;
 }
-
-int MyMatrix::getElement(int x, int y)
+template<class T>
+ int MyMatrix<T>::getElement(int x, int y)
 {
 	return matrix[x][y];
 }
-void MyMatrix::showMatrix()
+ template<class T>
+void MyMatrix<T>::showMatrix()
 {
 	for (int i = 0; i < sizeX; i++)
 	{
@@ -60,14 +65,15 @@ void MyMatrix::showMatrix()
 		cout << endl;
 	}
 }
-
-void MyMatrix::setValue(int x, int y ,int toSet)
+template<class T>
+void MyMatrix<T>::setValue(int x, int y ,int toSet)
 {
 	if (x >= sizeX || y >= sizeY)throw out_of_range("out of range!!!");
 	matrix[x][y] = toSet;
 }
 //********************************************************
-MyMatrix MyMatrix::coppyMatrix(MyMatrix toCoppy)
+template<class T>
+MyMatrix<T> MyMatrix<T>::coppyMatrix(MyMatrix toCoppy)
 {
 	 MyMatrix newMatrix(toCoppy.sizeX, toCoppy.sizeY);
 	 for (int i = 0; i < toCoppy.sizeX; i++)
@@ -80,7 +86,8 @@ MyMatrix MyMatrix::coppyMatrix(MyMatrix toCoppy)
 	 return newMatrix;
 }
 //********************************************************
-MyMatrix operator +(MyMatrix oldMatrix, int a)
+template<class T>
+MyMatrix<T> operator +(MyMatrix oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
 	for (int i = 0; i < oldMatrix.getSizeX(); i++)
@@ -93,7 +100,8 @@ MyMatrix operator +(MyMatrix oldMatrix, int a)
 	return newMatrix;
 }
 //********************************************************
-MyMatrix MyMatrix::operator+(MyMatrix & oldMatrix)
+template<class T>
+MyMatrix<T> MyMatrix<T>::operator+(MyMatrix & oldMatrix)
 {
 	if (sizeX != oldMatrix.getSizeX() || sizeY != oldMatrix.getSizeY())throw std::invalid_argument("Matrix have difrennce size");
 	MyMatrix newMatrix(sizeX, sizeY);
@@ -107,7 +115,8 @@ MyMatrix MyMatrix::operator+(MyMatrix & oldMatrix)
 	return newMatrix;
 }
 //********************************************************
-MyMatrix operator -(MyMatrix oldMatrix, int a)
+template<class T>
+MyMatrix<T> operator -(MyMatrix oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
 	for (int i = 0; i < oldMatrix.getSizeX(); i++)
@@ -120,7 +129,8 @@ MyMatrix operator -(MyMatrix oldMatrix, int a)
 	return newMatrix;
 }
 //********************************************************
-MyMatrix MyMatrix::operator -(MyMatrix & oldMatrix)
+template<class T>
+MyMatrix<T> MyMatrix<T>::operator -(MyMatrix & oldMatrix)
 {
 	if (sizeX != oldMatrix.getSizeX() || sizeY != oldMatrix.getSizeY())throw std::invalid_argument("Matrix have difrennce size");
 	MyMatrix newMatrix(sizeX, sizeY);
@@ -134,7 +144,8 @@ MyMatrix MyMatrix::operator -(MyMatrix & oldMatrix)
 	return newMatrix;
 }
 //********************************************************
-MyMatrix operator *(MyMatrix oldMatrix, int a)
+template<class T>
+MyMatrix<T> operator *(MyMatrix oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
 	for (int i = 0; i < oldMatrix.getSizeX(); i++)
@@ -147,7 +158,8 @@ MyMatrix operator *(MyMatrix oldMatrix, int a)
 	return newMatrix;
 }
 //********************************************************
-MyMatrix MyMatrix::operator*(MyMatrix & oldMatrix)
+template<class T>
+MyMatrix<T> MyMatrix<T>::operator*(MyMatrix & oldMatrix)
 {
 	if (sizeY != oldMatrix.getSizeX())throw length_error("Wrong matrix dimension");
 		MyMatrix newMatrix(sizeX, oldMatrix.getSizeY());
@@ -164,7 +176,8 @@ MyMatrix MyMatrix::operator*(MyMatrix & oldMatrix)
 		return newMatrix;
 }
 //********************************************************
-MyMatrix operator /(MyMatrix oldMatrix, int a)
+template<class T>
+MyMatrix<T> operator /(MyMatrix oldMatrix, int a)
 {
 		if (a == 0)throw std::logic_error("Divide by zero exception");
 		MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
@@ -178,7 +191,8 @@ MyMatrix operator /(MyMatrix oldMatrix, int a)
 		return newMatrix;
 }
 //********************************************************
-MyMatrix MyMatrix::operator=(MyMatrix oldMatrix)
+template<class T>
+MyMatrix<T> MyMatrix<T>::operator=(MyMatrix oldMatrix)
 {
 	if (sizeX != oldMatrix.getSizeX() || sizeY != oldMatrix.getSizeY()) throw length_error("Wrong matrix dimension");
 	for (int i = 0; i < sizeX; i++)
@@ -191,19 +205,22 @@ MyMatrix MyMatrix::operator=(MyMatrix oldMatrix)
 	return *this;
 }
 //********************************************************
+template<class T>
 ostream &operator<<(ostream &stream, MyMatrix oldMatrix)
 {
 	stream << oldMatrix.matrixToString();
 	return stream;
 }
 //********************************************************
-HelpOverload MyMatrix::operator[](int i)
+template<class T>
+HelpOverload MyMatrix<T>::operator[](int i)
 {
 	HelpOverload newHelp(matrix[i], sizeY, i);
 	return newHelp;
 }
 //********************************************************
-std::string MyMatrix::matrixToString()
+template<class T>
+std::string MyMatrix<T>::matrixToString()
 {
 	string s;
 	for (int i = 0; i < getSizeX(); i++)
@@ -217,7 +234,8 @@ std::string MyMatrix::matrixToString()
 	return s;
 }
 //********************************************************
-MyMatrix::~MyMatrix()
+template<class T>
+MyMatrix<T>::~MyMatrix()
 {
 	for (int i = 0; i < sizeX; i++)
 	{
