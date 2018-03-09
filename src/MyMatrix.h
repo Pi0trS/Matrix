@@ -28,7 +28,7 @@ public:
 	friend MyMatrix operator /(MyMatrix oldMatrix, int a);
 	MyMatrix operator=(MyMatrix oldMatrix);
 	friend ostream &operator<<(ostream &stream, MyMatrix oldMatrix);
-	HelpOverload operator[](int i);
+	HelpOverload<T> operator[](int i);
 	string matrixToString();
 
 private:

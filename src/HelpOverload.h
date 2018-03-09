@@ -3,7 +3,7 @@
 #include"MyMatrix.h"
 
 using namespace std;
-
+template<class H>
 class  HelpOverload
 {
 public:

@@ -7,15 +7,15 @@ int main()
 {
 	try
 	{
-		//MyMatrix <int> oko(2, 2);
+		MyMatrix <int> oko(2, 2);
 		//cout << oko.getElement(0, 0);
 		//oko.setValue(0, 0, 3);
 		//MyMatrix<int> oko1(2, 2);
 		//oko1 = oko*oko;
 
 		//cout << endl;
-		//oko1[0][0] = 1;
-		//cout << oko1[0][0];
+		oko[0][0] = 1;
+		cout << oko[0][0];
 		cout << "helll0";
 		return 0;
 	}

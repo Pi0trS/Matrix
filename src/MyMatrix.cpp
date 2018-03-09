@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include "HelpOverload.cpp"
 #include "MyMatrix.h"
 
 using namespace std;
@@ -213,9 +214,9 @@ ostream &operator<<(ostream &stream, MyMatrix<T> oldMatrix)
 }
 //********************************************************
 template<class T>
-HelpOverload MyMatrix<T>::operator[](int i)
+HelpOverload<T> MyMatrix<T>::operator[](int i)
 {
-	HelpOverload newHelp(matrix[i], sizeY, i);
+	HelpOverload<T> newHelp(matrix[i], sizeY, i);
 	return newHelp;
 }
 //********************************************************
