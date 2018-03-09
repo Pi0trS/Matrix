@@ -20,7 +20,7 @@ public:
 	void setValue(int x, int y, T toSet);
 	MyMatrix coppyMatrix(MyMatrix toCoppy);
 	template<class T> friend MyMatrix operator +(MyMatrix<T> oldMatrix, T a);
-	 MyMatrix operator +(MyMatrix & oldMatrix);
+	MyMatrix operator +(MyMatrix & oldMatrix);
 	friend MyMatrix operator -(MyMatrix oldMatrix, int a);
 	MyMatrix operator -(MyMatrix & oldMatrix);
 	friend MyMatrix operator *(MyMatrix oldMatrix, int a);

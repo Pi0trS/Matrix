@@ -12,7 +12,7 @@ int main()
 		//cout << oko.getElement(0, 0);
 		oko.setValue(0, 0, 3);
 		oko[0][0] = 1;
-		//oko + 1;
+		//oko + oko;
 		cout << oko.getElement(0, 0);
 		//MyMatrix<int> oko1(2, 2);
 		//oko1 = oko*oko;
