@@ -87,7 +87,7 @@ MyMatrix<T> MyMatrix<T>::coppyMatrix(MyMatrix toCoppy)
 }
 //********************************************************
 template<class T>
-MyMatrix<T> operator +(MyMatrix oldMatrix, int a)
+MyMatrix<T> operator +(MyMatrix<T> oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
 	for (int i = 0; i < oldMatrix.getSizeX(); i++)
@@ -116,7 +116,7 @@ MyMatrix<T> MyMatrix<T>::operator+(MyMatrix & oldMatrix)
 }
 //********************************************************
 template<class T>
-MyMatrix<T> operator -(MyMatrix oldMatrix, int a)
+MyMatrix<T> operator -(MyMatrix<T> oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
 	for (int i = 0; i < oldMatrix.getSizeX(); i++)
@@ -145,7 +145,7 @@ MyMatrix<T> MyMatrix<T>::operator -(MyMatrix & oldMatrix)
 }
 //********************************************************
 template<class T>
-MyMatrix<T> operator *(MyMatrix oldMatrix, int a)
+MyMatrix<T> operator *(MyMatrix<T> oldMatrix, int a)
 {
 	MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
 	for (int i = 0; i < oldMatrix.getSizeX(); i++)
@@ -177,7 +177,7 @@ MyMatrix<T> MyMatrix<T>::operator*(MyMatrix & oldMatrix)
 }
 //********************************************************
 template<class T>
-MyMatrix<T> operator /(MyMatrix oldMatrix, int a)
+MyMatrix<T> operator /(MyMatrix<T> oldMatrix, int a)
 {
 		if (a == 0)throw std::logic_error("Divide by zero exception");
 		MyMatrix newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
@@ -206,7 +206,7 @@ MyMatrix<T> MyMatrix<T>::operator=(MyMatrix oldMatrix)
 }
 //********************************************************
 template<class T>
-ostream &operator<<(ostream &stream, MyMatrix oldMatrix)
+ostream &operator<<(ostream &stream, MyMatrix<T> oldMatrix)
 {
 	stream << oldMatrix.matrixToString();
 	return stream;

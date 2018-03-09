@@ -3,14 +3,11 @@
 using namespace std;
 #include"MyMatrix.h"
 #include"MyMatrix.cpp"
-
-
-
 int main()
 {
 	try
 	{
-		MyMatrix <int> oko(2, 2);
+		//MyMatrix <int> oko(2, 2);
 		//cout << oko.getElement(0, 0);
 		//oko.setValue(0, 0, 3);
 		//MyMatrix<int> oko1(2, 2);

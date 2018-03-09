@@ -1,5 +1,7 @@
 #pragma once
 #include "HelpOverload.h"
+
+
 using namespace std;
 
 template<class T>
@@ -10,7 +12,6 @@ public:
 	MyMatrix(int x, int y);
 	MyMatrix(const MyMatrix<T> & a);
 	~MyMatrix();
-	
 	
 	int getSizeX();
 	int getSizeY();
