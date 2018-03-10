@@ -10,21 +10,22 @@ int main()
 	{
 		
 		MyMatrix <double> oko(2, 2);
-		//MyMatrix<double> oko1(2, 4);
+		MyMatrix<double> oko1(2, 3);
+		MyMatrix<double> oko2(2, 3);
 		//cout << oko.getElement(0, 0);
 		//oko.setValue(0, 0, 3);
 		oko = oko + 3;
-		//oko1 = oko + 23;
+		oko1 = oko1 + 23;
 		//oko = oko / 2;
-		//oko = oko1 * oko;
+		oko2 = (oko * oko1);
 		//cout << oko.getElement(0, 0);
 		//oko.showMatrix();
-		//cout << oko;
+		cout << oko2;
 		//string s = oko.matrixToString();
 		//cout << s;
 		//oko1 = oko*oko;
-		cout << endl;
-		oko[0][0] = 1;
+		//cout << endl;
+		//oko[0][0] = 1;
 		//cout << oko[0][0];
 		//cout << "helll0";
 	}
