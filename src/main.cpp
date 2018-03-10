@@ -2,18 +2,21 @@
 #include<string>
 using namespace std;
 #include"MyMatrix.h"
-#include"MyMatrix.cpp"
+//#include"MyMatrix.cpp"
 int main()
 {
+	int i = 1;
 	try
 	{
 		
 		MyMatrix <int> oko(2, 2);
 		//cout << oko.getElement(0, 0);
-		oko.setValue(0, 0, 3);
-		oko[0][0] = 1;
-		//oko + oko;
-		cout << oko.getElement(0, 0);
+		//oko.setValue(0, 0, 3);
+		oko = oko + 3;
+		oko = oko * 2;
+		oko = oko + oko;
+		//cout << oko.getElement(0, 0);
+		oko.showMatrix();
 		//MyMatrix<int> oko1(2, 2);
 		//oko1 = oko*oko;
 
