@@ -18,10 +18,11 @@ public:
 	
 	int getSizeX();
 	int getSizeY();
-	int getElement(int x, int y);
+	T getElement(int x, int y);
 	void showMatrix();
 	void setValue(int x, int y, T toSet);
 	MyMatrix coppyMatrix(MyMatrix toCoppy);
+	//********************************************************
 	friend MyMatrix<T> operator +(MyMatrix<T> oldMatrix, T a)
 	{
 		MyMatrix<T> newMatrix(oldMatrix.getSizeX(), oldMatrix.getSizeY());
@@ -29,8 +30,7 @@ public:
 		{
 			for (int j = 0; j < oldMatrix.getSizeY(); j++)
 			{
-				newMatrix.setValue(i, j, oldMatrix.getElement(i, j) + a);
-				//newMatrix.matrix[i][j] = oldMatrix.getElement(i,j) + a;
+				newMatrix.setValue(i, j, oldMatrix.getElement(i, j) + a);	
 			}
 		}
 		return newMatrix;
@@ -43,7 +43,7 @@ public:
 		{
 			for (int j = 0; j < oldMatrix.getSizeY(); j++)
 			{
-				newMatrix.matrix[i][j] = matrix[i][j] + oldMatrix.getElement(i, j);
+				newMatrix.setValue(i,j,(getElement(i,j) + oldMatrix.getElement(i, j)));
 			}
 		}
 		return newMatrix;
@@ -55,7 +55,7 @@ public:
 		{
 			for (int j = 0; j < oldMatrix.getSizeY(); j++)
 			{
-				newMatrix.matrix[i][j] = oldMatrix.getElement(i, j) - a;
+				newMatrix.setValue(i, j, (oldMatrix.getElement(i, j) - a));
 			}
 		}
 		return newMatrix;
@@ -68,7 +68,7 @@ public:
 		{
 			for (int j = 0; j < oldMatrix.getSizeY(); j++)
 			{
-				newMatrix.matrix[i][j] = getElement(i, j) - oldMatrix.getElement(i, j);
+				newMatrix.setValue(i,j,(getElement(i, j) - oldMatrix.getElement(i, j)));
 			}
 		}
 		return newMatrix;
@@ -80,7 +80,7 @@ public:
 		{
 			for (int j = 0; j < oldMatrix.getSizeY(); j++)
 			{
-				newMatrix.matrix[i][j] = oldMatrix.getElement(i, j) * a;
+				newMatrix.setValue(i,j,(oldMatrix.getElement(i, j) * a));
 			}
 		}
 		return newMatrix;
@@ -95,7 +95,7 @@ public:
 			{
 				for (int k = 0; k<sizeY; k++)
 				{
-					newMatrix.matrix[i][j] = newMatrix.matrix[i][j] + (getElement(i, k) * oldMatrix.getElement(k, j));
+					newMatrix.setValue(i, j, (newMatrix.getElement(i, j) + (getElement(i, k) * oldMatrix.getElement(k, j))));
 				}
 			}
 		}
@@ -109,20 +109,24 @@ public:
 		{
 			for (int j = 0; j < oldMatrix.getSizeY(); j++)
 			{
-				newMatrix.matrix[i][j] = oldMatrix.getElement(i, j) / a;
+				newMatrix.setValue(i, j, (oldMatrix.getElement(i, j) / a));
 			}
 		}
 		return newMatrix;
 	}
+	friend ostream &operator<<(ostream &stream, MyMatrix oldMatrix)
+	{
+		stream << oldMatrix.matrixToString();
+		return stream;
+	}
+	//********************************************************
 	MyMatrix operator=(MyMatrix oldMatrix);
-	friend ostream &operator<<(ostream &stream, MyMatrix oldMatrix);
-	HelpOverload<T> operator[](T i);
+	HelpOverload<T> operator[](int i);
 	string matrixToString();
 
 private:
 	int sizeX, sizeY;
 	T **matrix;
-//	T **testMatrix;
 };
 
 template<class T>
@@ -162,15 +166,15 @@ int MyMatrix<T>::getSizeX()
 {
 	return sizeX;
 }
-
 template<class T>
 int MyMatrix<T>::getSizeY()
 {
 	return sizeY;
 }
 template<class T>
-int MyMatrix<T>::getElement(int x, int y)
-{
+T MyMatrix<T>::getElement(int x, int y)
+{ 
+	if (x >= sizeX || y >= sizeY) throw out_of_range("wrong range");
 	return matrix[x][y];
 }
 template<class T>
@@ -327,15 +331,15 @@ MyMatrix<T> MyMatrix<T>::operator=(MyMatrix<T> oldMatrix)
 	return *this;
 }
 //********************************************************
-template<class T>
-ostream &operator<<(ostream &stream, MyMatrix<T> oldMatrix)
-{
-	stream << oldMatrix.matrixToString();
-	return stream;
-}
+//template<class T>
+//ostream &operator<<(ostream &stream, MyMatrix<T> oldMatrix)
+//{
+//	stream << oldMatrix.matrixToString();
+//	return stream;
+//}
 //********************************************************
 template<class T>
-HelpOverload<T> MyMatrix<T>::operator[](T i)
+HelpOverload<T> MyMatrix<T>::operator[](int i)
 {
 	HelpOverload<T> newHelp(matrix[i], sizeY, i);
 	return newHelp;
